@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://clbk4lwpstgpr"]
+
+[ext_resource type="Script" uid="uid://cer1k7vs136u6" path="res://front.gd" id="1_uekkd"]
+
+[node name="Front" type="Node"]
+script = ExtResource("1_uekkd")
+
+[node name="ToKitchen" type="Button" parent="."]
+offset_left = 1005.0
+offset_top = 305.0
+offset_right = 1095.0
+offset_bottom = 336.0
+text = "To Kitchen"
+
+[node name="FrontLabel" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 19.0
+offset_right = 527.0
+offset_bottom = 42.0
+text = "Front of cafe"
+
+[connection signal="pressed" from="ToKitchen" to="." method="_on_to_kitchen_pressed"]

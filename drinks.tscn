@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://buj3553hf3p28"]
+
+[ext_resource type="Script" uid="uid://cwn4wtvaw7q58" path="res://drinks.gd" id="1_enbsf"]
+
+[node name="Drinks" type="Node"]
+script = ExtResource("1_enbsf")
+
+[node name="ToKitchenFromDrinks" type="Button" parent="."]
+offset_left = 11.0
+offset_top = 287.0
+offset_right = 101.0
+offset_bottom = 318.0
+text = "To Kitchen"
+
+[node name="DrinksLabel" type="Label" parent="."]
+offset_left = 493.0
+offset_top = 11.0
+offset_right = 544.0
+offset_bottom = 34.0
+text = "Drinks"
+
+[connection signal="pressed" from="ToKitchenFromDrinks" to="." method="_on_to_kitchen_from_drinks_pressed"]
