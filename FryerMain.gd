@@ -1,18 +1,23 @@
 extends Node2D
 
-@export var flavours = ["chocolate", "strawberry", "vanilla"]
+@export var flavoursMap := {
+	"chocolate": "663931", # Brown
+	"strawberry": "d77bba",     # Pinkish
+	"vanilla": "ffffff"       # Creamy yellow
+}
 
 # Change this to lower time
 # Can possibly make it so that for each point you get less and less time?
 
-@export var time_limit = 5.0
-@export var points_to_win = 2
+@export var time_limit = 3
+@export var points_to_win = 5
 
+var random_colour = ""
 var current_flavour = ""
 var score = 0
 var game_active = false
 var time_left = 0.0
-
+var flavours = flavoursMap.keys()
 func _ready():
 	# Connect all area signals
 	$StrawberryArea.donut_dipped.connect(_on_zone_donut_dipped)
@@ -38,9 +43,13 @@ func _process(delta):
 			else:
 				$TimerLabel.text = "Time: 0.00"
 
-func start_new_round():
+func start_new_round():	
 	current_flavour = flavours[randi() % flavours.size()]
-	$FlavourLabel.text = "Dip in " + current_flavour + "!"
+	random_colour = flavoursMap.values()[randi() % flavoursMap.size()]
+	print(random_colour)
+	$FlavourLabel.add_theme_color_override("font_colour", Color("#"+random_colour))
+	$FlavourLabel.bbcode_text = "Dip in [color=%s]%s[/color]!" % [random_colour, current_flavour]
+	
 	reset_donut_position()
 	$Timer.start(time_limit)
 	time_left = time_limit
@@ -52,7 +61,7 @@ func start_new_round():
 		$RestartButton.visible = false
 	
 	if has_node("ScoreLabel"):
-		$ScoreLabel.text = "Score: " + str(score)
+		$ScoreLabel.text = "Score: " + str(score) +"🍩"
 	
 	game_active = true
 	print("New round: Dip in ", current_flavour)
