@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxwe5mibm2ba4"]
+
+[ext_resource type="Script" uid="uid://clikivr8c6yxt" path="res://FryerMain.gd" id="1_bc6tp"]
+[ext_resource type="Texture2D" uid="uid://dikl2awui16rh" path="res://assets/fryer-game.png" id="2_htech"]
+[ext_resource type="Texture2D" uid="uid://cdpfwsprwj52f" path="res://assets/donut.png" id="3_svysp"]
+[ext_resource type="Script" uid="uid://7prxomgpf5pp" path="res://donut_script.gd" id="4_htech"]
+[ext_resource type="Script" uid="uid://bd08u4g6kdqur" path="res://strawberry_area.gd" id="5_svysp"]
+[ext_resource type="Script" uid="uid://bsalp1na481kp" path="res://chocolate_area.gd" id="6_pax3n"]
+[ext_resource type="Script" uid="uid://cniqk8i5skh60" path="res://vanilla_area.gd" id="7_nkmwh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkmwh"]
+size = Vector2(356.5, 173.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xwig"]
+size = Vector2(358, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu8ra"]
+size = Vector2(355.5, 206)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nkmwh"]
+radius = 44.0
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_bc6tp")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(572.557, 326.556)
+scale = Vector2(1.302, 1.29149)
+texture = ExtResource("2_htech")
+
+[node name="FlavourLabel" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 17.0
+offset_right = 708.0
+offset_bottom = 69.0
+
+[node name="StrawberryArea" type="Area2D" parent="."]
+script = ExtResource("5_svysp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StrawberryArea"]
+position = Vector2(961.75, 106.25)
+shape = SubResource("RectangleShape2D_nkmwh")
+
+[node name="ChocolateArea" type="Area2D" parent="."]
+script = ExtResource("6_pax3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChocolateArea"]
+position = Vector2(961, 551.5)
+shape = SubResource("RectangleShape2D_7xwig")
+
+[node name="VanillaArea" type="Area2D" parent="."]
+script = ExtResource("7_nkmwh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VanillaArea"]
+position = Vector2(961, 335)
+shape = SubResource("RectangleShape2D_bu8ra")
+
+[node name="Donut" type="Area2D" parent="."]
+position = Vector2(156, 257)
+script = ExtResource("4_htech")
+
+[node name="Sprite" type="Sprite2D" parent="Donut"]
+position = Vector2(4.75, 4)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_svysp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Donut"]
+position = Vector2(-0.25, 0)
+shape = SubResource("CircleShape2D_nkmwh")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 143.0
+offset_right = 108.0
+offset_bottom = 182.0
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 17.0
+offset_top = 138.0
+offset_right = 109.0
+offset_bottom = 181.0
+text = "Restart"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 131.0
+offset_top = 139.0
+offset_right = 224.0
+offset_bottom = 180.0
+
+[connection signal="area_entered" from="StrawberryArea" to="StrawberryArea" method="_on_area_entered"]
+[connection signal="donut_dipped" from="StrawberryArea" to="." method="_on_zone_donut_dipped"]
+[connection signal="area_entered" from="ChocolateArea" to="ChocolateArea" method="_on_area_entered"]
+[connection signal="donut_dipped" from="ChocolateArea" to="." method="_on_zone_donut_dipped"]
+[connection signal="area_entered" from="VanillaArea" to="VanillaArea" method="_on_area_entered"]
+[connection signal="donut_dipped" from="VanillaArea" to="." method="_on_zone_donut_dipped"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
