@@ -61,7 +61,7 @@ func start_new_round():
 		$RestartButton.visible = false
 	
 	if has_node("ScoreLabel"):
-		$ScoreLabel.text = "Score: " + str(score)
+		$ScoreLabel.text = "Score: " + str(score) +"🍩"
 	
 	game_active = true
 	print("New round: Dip in ", current_flavour)
