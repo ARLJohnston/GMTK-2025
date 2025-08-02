@@ -1,22 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5l5txt2cvfa3"]
+[gd_scene load_steps=8 format=3 uid="uid://c5l5txt2cvfa3"]
 
 [ext_resource type="Script" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
 [ext_resource type="Texture2D" uid="uid://dvyq0okf4p5jw" path="res://assets/coffee-minigame.png" id="2_i7rmr"]
 [ext_resource type="FontFile" uid="uid://bxh4lowqjn1g0" path="res://assets/GNF.ttf" id="3_cvpei"]
+[ext_resource type="Texture2D" uid="uid://cj8hbldncnrwn" path="res://assets/coffee-rim.png" id="4_ln6rh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ousa6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2642i"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pc6p3"]
+
 [node name="CoffeeMakerMinigame" type="Node2D"]
 script = ExtResource("1_gfu5i")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-z_index = -1
+z_index = -2
 offset_left = 6.0
 offset_right = 1158.0
 offset_bottom = 648.0
 texture = ExtResource("2_i7rmr")
+
+[node name="Nozzle" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 543.0
+offset_top = 214.0
+offset_right = 570.0
+offset_bottom = 485.0
+
+[node name="FirstProgressBar" type="ProgressBar" parent="."]
+material = SubResource("CanvasItemMaterial_ousa6")
+offset_left = 489.0
+offset_top = 489.0
+offset_right = 658.0
+offset_bottom = 616.0
+rotation = -1.5708
+theme_override_styles/background = SubResource("StyleBoxEmpty_2642i")
+theme_override_styles/fill = SubResource("StyleBoxTexture_pc6p3")
+show_percentage = false
+
+[node name="MugRim" type="TextureRect" parent="."]
+offset_right = 1165.0
+offset_bottom = 648.0
+texture = ExtResource("4_ln6rh")
 
 [node name="CoffeeButton" type="Button" parent="."]
 offset_left = 793.0
@@ -49,16 +75,6 @@ offset_right = 1003.0
 offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("3_cvpei")
 text = "Milk"
-
-[node name="FirstProgressBar" type="ProgressBar" parent="."]
-material = SubResource("CanvasItemMaterial_ousa6")
-offset_left = 517.0
-offset_top = 489.0
-offset_right = 735.0
-offset_bottom = 580.0
-rotation = -1.5708
-theme_override_styles/background = SubResource("StyleBoxEmpty_2642i")
-show_percentage = false
 
 [connection signal="button_down" from="CoffeeButton" to="." method="_on_coffee_button_button_down"]
 [connection signal="button_up" from="CoffeeButton" to="." method="_on_coffee_button_button_up"]
