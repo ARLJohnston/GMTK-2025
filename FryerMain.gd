@@ -89,6 +89,9 @@ func _on_timer_timeout():
 	game_over("Game Over! Final Score: " + str(score))
 
 func game_over(winMessage):
+	queue_free()
+	SceneSwitcher.goto_scene("res://kitchen.tscn")
+	return
 	# Handle game over state
 	$FlavourLabel.text = winMessage
 	
