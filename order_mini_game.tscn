@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhe6huph75e3i"]
+
+[ext_resource type="Script" uid="uid://cuvccsusg32ng" path="res://order_mini_game.gd" id="1_ek375"]
+[ext_resource type="Texture2D" uid="uid://ct13xk2mtbmrr" path="res://assets/icon.svg" id="2_iq36e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t770h"]
+size = Vector2(598, 240)
+
+[node name="OrderMiniGame" type="Node"]
+script = ExtResource("1_ek375")
+
+[node name="MiniGameDisplay" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiniGameDisplay"]
+position = Vector2(733, 224)
+shape = SubResource("RectangleShape2D_t770h")
+
+[node name="Key1" type="Sprite2D" parent="MiniGameDisplay"]
+modulate = Color(0.247059, 0.94902, 0.364706, 1)
+position = Vector2(512, 224)
+texture = ExtResource("2_iq36e")
+
+[node name="Key2" type="Sprite2D" parent="MiniGameDisplay"]
+modulate = Color(0.004882, 0.0629578, 0.0774374, 1)
+position = Vector2(656, 224)
+texture = ExtResource("2_iq36e")
+
+[node name="Key3" type="Sprite2D" parent="MiniGameDisplay"]
+position = Vector2(800, 224)
+texture = ExtResource("2_iq36e")
+
+[node name="Key4" type="Sprite2D" parent="MiniGameDisplay"]
+modulate = Color(0.930461, 0.229434, 0.181383, 1)
+position = Vector2(944, 224)
+texture = ExtResource("2_iq36e")

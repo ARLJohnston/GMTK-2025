@@ -1,15 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://clbk4lwpstgpr"]
+[gd_scene load_steps=3 format=3 uid="uid://clbk4lwpstgpr"]
 
 [ext_resource type="Script" uid="uid://cer1k7vs136u6" path="res://front.gd" id="1_uekkd"]
+[ext_resource type="Texture2D" uid="uid://bxx8r1c3sj64o" path="res://assets/front-scene.png" id="2_xpgvt"]
 
 [node name="Front" type="Node"]
 script = ExtResource("1_uekkd")
 
+[node name="FrontBackground" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_xpgvt")
+
 [node name="ToKitchen" type="Button" parent="."]
-offset_left = 1005.0
-offset_top = 305.0
-offset_right = 1095.0
-offset_bottom = 336.0
+offset_left = 1026.0
+offset_top = 527.0
+offset_right = 1116.0
+offset_bottom = 558.0
 text = "To Kitchen"
 
 [node name="FrontLabel" type="Label" parent="."]
