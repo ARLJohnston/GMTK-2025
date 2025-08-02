@@ -1,0 +1,185 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5l5txt2cvfa3"]
+
+[ext_resource type="Script" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
+[ext_resource type="Texture2D" uid="uid://dvyq0okf4p5jw" path="res://assets/coffee-minigame.png" id="2_i7rmr"]
+[ext_resource type="FontFile" uid="uid://bxh4lowqjn1g0" path="res://assets/GNF.ttf" id="3_cvpei"]
+[ext_resource type="Texture2D" uid="uid://cj8hbldncnrwn" path="res://assets/coffee-rim.png" id="4_ln6rh"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ousa6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2642i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pc6p3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3cpj4"]
+
+[node name="CoffeeMakerMinigame" type="Node2D"]
+script = ExtResource("1_gfu5i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+offset_left = 6.0
+offset_right = 1158.0
+offset_bottom = 648.0
+texture = ExtResource("2_i7rmr")
+
+[node name="Nozzle" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 543.0
+offset_top = 214.0
+offset_right = 570.0
+offset_bottom = 485.0
+
+[node name="FirstProgressBar" type="ProgressBar" parent="."]
+material = SubResource("CanvasItemMaterial_ousa6")
+offset_left = 489.0
+offset_top = 489.0
+offset_right = 658.0
+offset_bottom = 616.0
+rotation = -1.5708
+theme_override_styles/background = SubResource("StyleBoxEmpty_2642i")
+theme_override_styles/fill = SubResource("StyleBoxTexture_pc6p3")
+show_percentage = false
+
+[node name="MugRim" type="TextureRect" parent="."]
+offset_right = 1165.0
+offset_bottom = 648.0
+texture = ExtResource("4_ln6rh")
+
+[node name="CoffeeButton" type="Button" parent="."]
+offset_left = 793.0
+offset_top = 211.0
+offset_right = 883.0
+offset_bottom = 301.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Coffee"
+
+[node name="ChocolateButton" type="Button" parent="."]
+offset_left = 793.0
+offset_top = 328.0
+offset_right = 883.0
+offset_bottom = 418.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Chocolate"
+
+[node name="FoamButton" type="Button" parent="."]
+offset_left = 911.0
+offset_top = 321.0
+offset_right = 1001.0
+offset_bottom = 411.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Foam"
+
+[node name="MilkButton" type="Button" parent="."]
+offset_left = 913.0
+offset_top = 214.0
+offset_right = 1003.0
+offset_bottom = 304.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Milk"
+
+[node name="MessageBackground" type="ColorRect" parent="."]
+visible = false
+z_index = 100
+offset_left = 141.0
+offset_top = 62.0
+offset_right = 1021.0
+offset_bottom = 575.0
+color = Color(0.733333, 0.32549, 0.835294, 1)
+
+[node name="FailedLabel" type="Label" parent="."]
+visible = false
+z_index = 101
+offset_right = 1157.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_cvpei")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxTexture_3cpj4")
+text = "FAILED ❌ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuccessLabel" type="Label" parent="."]
+visible = false
+z_index = 101
+offset_right = 1157.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_cvpei")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxTexture_3cpj4")
+text = "SUCCESS ✅"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+visible = false
+offset_left = 190.0
+offset_top = 586.0
+offset_right = 562.0
+offset_bottom = 632.0
+text = "Restart"
+
+[node name="BackButton" type="Button" parent="."]
+visible = false
+offset_left = 584.0
+offset_top = 586.0
+offset_right = 956.0
+offset_bottom = 632.0
+text = "Back To Kitchen"
+
+[node name="25mil" type="ColorRect" parent="."]
+offset_left = 583.0
+offset_top = 446.0
+offset_right = 617.0
+offset_bottom = 453.0
+color = Color(0.831373, 0.521569, 0.909804, 1)
+
+[node name="25mil3" type="ColorRect" parent="."]
+offset_left = 583.0
+offset_top = 370.0
+offset_right = 617.0
+offset_bottom = 377.0
+color = Color(0.830749, 0.52261, 0.911128, 1)
+
+[node name="25mil2" type="ColorRect" parent="."]
+offset_left = 584.0
+offset_top = 406.0
+offset_right = 617.0
+offset_bottom = 413.0
+color = Color(0.831373, 0.521569, 0.909804, 1)
+
+[node name="25PercentLabel" type="Label" parent="."]
+offset_left = 584.0
+offset_top = 420.0
+offset_right = 618.0
+offset_bottom = 443.0
+theme_override_colors/font_color = Color(0.831373, 0.521569, 0.909804, 1)
+text = "25%"
+
+[node name="50PercentLabel" type="Label" parent="."]
+offset_left = 583.0
+offset_top = 382.0
+offset_right = 617.0
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(0.831373, 0.521569, 0.909804, 1)
+text = "50%"
+
+[node name="75PercentLabel" type="Label" parent="."]
+offset_left = 584.0
+offset_top = 345.0
+offset_right = 618.0
+offset_bottom = 368.0
+theme_override_colors/font_color = Color(0.831373, 0.521569, 0.909804, 1)
+text = "75%"
+
+[connection signal="button_down" from="CoffeeButton" to="." method="_on_coffee_button_button_down"]
+[connection signal="button_up" from="CoffeeButton" to="." method="_on_coffee_button_button_up"]
+[connection signal="button_down" from="ChocolateButton" to="." method="_on_chocolate_button_button_down"]
+[connection signal="button_up" from="ChocolateButton" to="." method="_on_chocolate_button_button_up"]
+[connection signal="button_down" from="FoamButton" to="." method="_on_foam_button_button_down"]
+[connection signal="button_up" from="FoamButton" to="." method="_on_foam_button_button_up"]
+[connection signal="button_down" from="MilkButton" to="." method="_on_milk_button_button_down"]
+[connection signal="button_up" from="MilkButton" to="." method="_on_milk_button_button_up"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

@@ -10,7 +10,6 @@ config_version=5
 
 [application]
 
-config/name="GMTK-2025"
 run/main_scene="uid://bxd4c8c0ewoii"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/icon.svg"
