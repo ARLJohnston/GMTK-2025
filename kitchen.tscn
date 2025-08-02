@@ -32,5 +32,13 @@ offset_right = 1126.0
 offset_bottom = 562.0
 text = "To Drinks"
 
+[node name="FryerButton" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 307.0
+offset_right = 228.0
+offset_bottom = 435.0
+text = "Fry minigame"
+
 [connection signal="pressed" from="ToFrontFromKitchen" to="." method="_on_to_front_from_kitchen_pressed"]
 [connection signal="pressed" from="ToDrinksFromKitchen" to="." method="_on_to_drinks_from_kitchen_pressed"]
+[connection signal="pressed" from="FryerButton" to="." method="_on_fryer_button_pressed"]
