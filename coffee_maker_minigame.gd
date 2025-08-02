@@ -43,7 +43,7 @@ func _ready() -> void:
 	$Nozzle.hide() 
 	
 	var opaque_fill_style = StyleBoxFlat.new()
-	opaque_fill_style.bg_color = Color(1, 1, 1, 1)  # white and fully opaque
+	opaque_fill_style.bg_color = Color(1, 1, 1, 1) 
 	opaque_fill_style.set_corner_radius_all(5)
 	$FirstProgressBar.add_theme_stylebox_override("fill", opaque_fill_style)
 	
@@ -119,23 +119,6 @@ func evaluate_drink() -> void:
 	else:
 		print("❌ Drink did not match.")
 
-	
-#func does_match_conditions(conditions: Array[WinCondition]) -> bool:
-	#if conditions.size() != layers.size():
-		#return false
-	#
-	#for i in range(layers.size()):
-		#var layer = layers[i]
-		#var condition = conditions[i]
-		#
-		#if layer.ingredient != condition.ingredient:
-			#return false
-		#if layer.percentage < condition.lower_bound * 100 or layer.percentage > condition.upper_bound * 100:
-			#return false
-	#
-	#return true
-
-
 				
 	
 func sum() -> float:
@@ -189,7 +172,6 @@ func add_ingredient(delta: float , ingredient : CoffeeIngredient.Ingredient) -> 
 	
 	if (last_ingredient == ingredient and layers.size() > 0):  		 
 		layers[-1].percentage += delta * FLOW_RATE 
-		update_nozzle_color()  
 		print(layers[-1].percentage)
 	else: 
 		layers.append(CoffeeIngredient.new(ingredient, 0)) 
@@ -197,30 +179,6 @@ func add_ingredient(delta: float , ingredient : CoffeeIngredient.Ingredient) -> 
 		
 	last_ingredient = ingredient
 		  
-		
-func update_nozzle_color():    
-	if (is_flowing): 
-		$Nozzle.show()
-		$Nozzle.modulate = Color.SADDLE_BROWN 
-	else: 
-		$Nozzle.hide
-	 
-	
-	#var percentage = layers[-1].percentage  / 100
-	#var fractional_size = percentage * current_bar.size.y  
-	#var start_y = current_bar.position.y  
-	#
-	#var new_nozzle_y = start_y  + fractinal_size
-	#
-	##$Nozzle.position.y = start_y  + fractinal_size
-	
-	
-	 
-	
-	
-	
-	
-	
 	
 func ingredient_changed(new_ingredient : CoffeeIngredient.Ingredient): 
 	if (current_ingredient == null or current_ingredient != new_ingredient): 
