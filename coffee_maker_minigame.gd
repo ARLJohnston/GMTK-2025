@@ -2,13 +2,20 @@ extends Node
  
 
 var layers : Array[CoffeeIngredient]  
-var last_ingredient : CoffeeIngredient.Ingredient    
+var last_ingredient : CoffeeIngredient.Ingredient  
 var first_ingredient : CoffeeIngredient.Ingredient
 var is_flowing : bool 
 var current_ingredient : CoffeeIngredient.Ingredient   
-var first_run : bool = true
+var first_run : bool = true 
+var failed = false 
+
+@onready var SHOW_ON_END = [$BackButton, $RestartButton]
+
+const COFFEE_COLOR = Color("#6F4E37") 
+const CHOCOLATE_COLOR = Color("#381819")
  
 @onready var current_bar: ProgressBar = $FirstProgressBar  
+var progress_bars : Array[ProgressBar] 
 
 enum Drink {
 	LATTE,
@@ -38,7 +45,7 @@ var winning_conditions = {
 		WinCondition.new(0.10, 0.20, CoffeeIngredient.Ingredient.MILK),
 		WinCondition.new(0.05, 0.10, CoffeeIngredient.Ingredient.MILK_FOAM)
 	]
-}
+} 
 func _ready() -> void: 
 	$Nozzle.hide() 
 	
@@ -46,9 +53,21 @@ func _ready() -> void:
 	opaque_fill_style.bg_color = Color(1, 1, 1, 1) 
 	opaque_fill_style.set_corner_radius_all(5)
 	$FirstProgressBar.add_theme_stylebox_override("fill", opaque_fill_style)
+	$FailedLabel.hide()
+	$MessageBackground.hide() 
+	$SuccessLabel.hide() 
+	
+	hideOnRestart()
+	
+func _process(delta: float) -> void:  
 	
 	
-func _process(delta: float) -> void:    
+	if (failed):  
+		$FailedLabel.show() 
+		$MessageBackground.show() 
+		showOnEnd()
+		return
+		   
 	
 	if (is_flowing):   
 		add_ingredient(delta, current_ingredient) 
@@ -60,8 +79,8 @@ func _process(delta: float) -> void:
 		current_bar.value = layers[-1].percentage 
 		match current_ingredient: 
 			CoffeeIngredient.Ingredient.COFFEE: 
-				current_bar.modulate = Color.SADDLE_BROWN  
-				$Nozzle.modulate = Color.SADDLE_BROWN 
+				current_bar.modulate = COFFEE_COLOR  
+				$Nozzle.modulate = COFFEE_COLOR 
 			CoffeeIngredient.Ingredient.MILK: 
 				current_bar.modulate = Color.MINT_CREAM  
 				$Nozzle.modulate = Color.MINT_CREAM 
@@ -69,55 +88,67 @@ func _process(delta: float) -> void:
 				current_bar.modulate = Color.ANTIQUE_WHITE 
 				$Nozzle.modulate = Color.ANTIQUE_WHITE 
 			CoffeeIngredient.Ingredient.CHOCOLATE: 
-				current_bar.modulate = Color.BROWN   
-				$Nozzle.modulate = Color.BROWN     
+				current_bar.modulate = CHOCOLATE_COLOR   
+				$Nozzle.modulate = CHOCOLATE_COLOR
 				
 	const CHECK_THRESHOLD_LOWER = 90
 	const CHECK_THRESHOLD_UPPER = 110
 	var current_fill = sum()
 	
 	if current_fill > CHECK_THRESHOLD_UPPER: 
-		print("failed") 
+		failed = true
 		
 	if (current_fill > CHECK_THRESHOLD_LOWER and current_fill < CHECK_THRESHOLD_UPPER): 
 		evaluate_drink()
 		   
+ 
+func showOnEnd() -> void: 
+	for button in SHOW_ON_END: 
+		button.show() 
 		
+func hideOnRestart() -> void: 
+	for button in SHOW_ON_END: 
+		button.hide()
 		
-func evaluate_drink() -> void:
-	var conditions = winning_conditions[Drink.LATTE] 
-	var is_drink_complete = true
+func evaluate_drink() -> void: 
+	for drink in Drink.values(): 
+		
+		var conditions = winning_conditions[drink] 
+		var is_drink_complete = true
 
-	print("Evaluating drink for:", Drink.keys()[Drink.LATTE])
-	print("Expected layers:", conditions.size(), " | Actual layers:", layers.size())
+		print("Evaluating drink for:", Drink.keys()[drink])
+		print("Expected layers:", conditions.size(), " | Actual layers:", layers.size())
 
-	if conditions.size() != layers.size():
-		is_drink_complete = false
-		print("❌ Layer count mismatch!")
-
-	for i in range(min(layers.size(), conditions.size())):
-		var layer = layers[i]
-		var condition = conditions[i]
-
-		var actual_ingredient_str = CoffeeIngredient.Ingredient.keys()[layer.ingredient]
-		var expected_ingredient_str = CoffeeIngredient.Ingredient.keys()[condition.ingredient]
-
-		print("Checking layer", i)
-		print("- Ingredient:", actual_ingredient_str, " | Expected:", expected_ingredient_str)
-		print("- Percentage:", layer.percentage, " | Expected:", condition.lower_bound * 100, "to", condition.upper_bound * 100)
-
-		if layer.ingredient != condition.ingredient:
-			is_drink_complete = false 
-			print("❌ Ingredient mismatch at layer", i)
-
-		if layer.percentage < condition.lower_bound * 100 or layer.percentage > condition.upper_bound * 100: 
+		if conditions.size() != layers.size():
 			is_drink_complete = false
-			print("❌ Ratio out of bounds at layer", i)
+			print("❌ Layer count mismatch!")
 
-	if is_drink_complete:
-		print("✅ Matched drink:", Drink.keys()[Drink.LATTE])
-	else:
-		print("❌ Drink did not match.")
+		for i in range(min(layers.size(), conditions.size())):
+			var layer = layers[i]
+			var condition = conditions[i]
+
+			var actual_ingredient_str = CoffeeIngredient.Ingredient.keys()[layer.ingredient]
+			var expected_ingredient_str = CoffeeIngredient.Ingredient.keys()[condition.ingredient]
+
+			print("Checking layer", i)
+			print("- Ingredient:", actual_ingredient_str, " | Expected:", expected_ingredient_str)
+			print("- Percentage:", layer.percentage, " | Expected:", condition.lower_bound * 100, "to", condition.upper_bound * 100)
+
+			if layer.ingredient != condition.ingredient:
+				is_drink_complete = false 
+				print("❌ Ingredient mismatch at layer", i)
+
+			if layer.percentage < condition.lower_bound * 100 or layer.percentage > condition.upper_bound * 100: 
+				is_drink_complete = false
+				print("❌ Ratio out of bounds at layer", i)
+
+		if is_drink_complete:
+			print("✅ Matched drink:", Drink.keys()[drink]) 
+			$SuccessLabel.show() 
+			$MessageBackground.show() 
+			showOnEnd()
+		else:
+			print("❌ Drink did not match.")
 
 				
 	
@@ -157,7 +188,9 @@ func generate_new_bar():
 	new_bar.position = current_bar.position - Vector2(0, fractional_size + 0.3 * fractional_size)  
 
 	current_bar.get_parent().add_child(new_bar) 
-	current_bar = new_bar
+	current_bar = new_bar 
+	
+	progress_bars.append(current_bar)
 
 	
 func add_first_ingredient(ingredient : CoffeeIngredient.Ingredient): 
@@ -188,25 +221,31 @@ func ingredient_changed(new_ingredient : CoffeeIngredient.Ingredient):
 func _on_coffee_button_button_down() -> void:  
 	add_first_ingredient(CoffeeIngredient.Ingredient.COFFEE)  
 	ingredient_changed(CoffeeIngredient.Ingredient.COFFEE)
-	is_flowing = true  
+	is_flowing = true   
+	$Nozzle.show()
 
 
 func _on_chocolate_button_button_down() -> void: 
 	add_first_ingredient(CoffeeIngredient.Ingredient.CHOCOLATE)  
 	ingredient_changed(CoffeeIngredient.Ingredient.CHOCOLATE)
-	is_flowing = true  
+	is_flowing = true   
+	$Nozzle.show()
 
 
 func _on_foam_button_button_down() -> void: 
 	add_first_ingredient(CoffeeIngredient.Ingredient.MILK_FOAM)  
 	ingredient_changed(CoffeeIngredient.Ingredient.MILK_FOAM)
-	is_flowing = true  
+	is_flowing = true   
+	$Nozzle.show()
+	
 
 
 func _on_milk_button_button_down() -> void: 
 	add_first_ingredient(CoffeeIngredient.Ingredient.MILK)  
 	ingredient_changed(CoffeeIngredient.Ingredient.MILK)
-	is_flowing = true  
+	is_flowing = true   
+	$Nozzle.show()
+	
 
 
 func _on_coffee_button_button_up() -> void:
@@ -227,3 +266,15 @@ func _on_foam_button_button_up() -> void:
 func _on_milk_button_button_up() -> void:
 	is_flowing = false 
 	$Nozzle.hide()
+
+
+func _on_restart_button_pressed() -> void:
+	layers = []
+	is_flowing = false 
+	first_run = true  
+	failed = false  
+	self._ready()  
+	$FirstProgressBar.value = 0 
+	for progress_bar in progress_bars: 
+		progress_bar.hide() 
+	progress_bars = []

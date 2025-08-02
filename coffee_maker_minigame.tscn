@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5l5txt2cvfa3"]
+[gd_scene load_steps=9 format=3 uid="uid://c5l5txt2cvfa3"]
 
 [ext_resource type="Script" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
 [ext_resource type="Texture2D" uid="uid://dvyq0okf4p5jw" path="res://assets/coffee-minigame.png" id="2_i7rmr"]
@@ -10,6 +10,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2642i"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pc6p3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3cpj4"]
 
 [node name="CoffeeMakerMinigame" type="Node2D"]
 script = ExtResource("1_gfu5i")
@@ -76,6 +78,52 @@ offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("3_cvpei")
 text = "Milk"
 
+[node name="MessageBackground" type="ColorRect" parent="."]
+z_index = 100
+offset_left = 141.0
+offset_top = 62.0
+offset_right = 1021.0
+offset_bottom = 575.0
+color = Color(0.733333, 0.32549, 0.835294, 1)
+
+[node name="FailedLabel" type="Label" parent="."]
+z_index = 101
+offset_right = 1157.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_cvpei")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxTexture_3cpj4")
+text = "FAILED ❌ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuccessLabel" type="Label" parent="."]
+z_index = 101
+offset_right = 1157.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_cvpei")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxTexture_3cpj4")
+text = "SUCCESS ✅"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 190.0
+offset_top = 586.0
+offset_right = 562.0
+offset_bottom = 632.0
+text = "Restart"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 584.0
+offset_top = 586.0
+offset_right = 956.0
+offset_bottom = 632.0
+text = "Back To Kitchen"
+
 [connection signal="button_down" from="CoffeeButton" to="." method="_on_coffee_button_button_down"]
 [connection signal="button_up" from="CoffeeButton" to="." method="_on_coffee_button_button_up"]
 [connection signal="button_down" from="ChocolateButton" to="." method="_on_chocolate_button_button_down"]
@@ -84,3 +132,4 @@ text = "Milk"
 [connection signal="button_up" from="FoamButton" to="." method="_on_foam_button_button_up"]
 [connection signal="button_down" from="MilkButton" to="." method="_on_milk_button_button_down"]
 [connection signal="button_up" from="MilkButton" to="." method="_on_milk_button_button_up"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
