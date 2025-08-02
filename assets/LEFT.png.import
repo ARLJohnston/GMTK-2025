@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdpfwsprwj52f"
-path="res://.godot/imported/donut.png-09a3477046b34b74f754857c2fc77fc2.ctex"
+uid="uid://dqwi1okawlbqk"
+path="res://.godot/imported/LEFT.png-5053fdc0f5fd83c6218723e4e59d3b9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/donut.png"
-dest_files=["res://.godot/imported/donut.png-09a3477046b34b74f754857c2fc77fc2.ctex"]
+source_file="res://assets/LEFT.png"
+dest_files=["res://.godot/imported/LEFT.png-5053fdc0f5fd83c6218723e4e59d3b9b.ctex"]
 
 [params]
 

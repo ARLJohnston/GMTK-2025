@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxd4c8c0ewoii"]
+[gd_scene load_steps=3 format=3 uid="uid://bxd4c8c0ewoii"]
 
 [ext_resource type="Script" uid="uid://brc78ihy0we0j" path="res://kitchen.gd" id="1_vloss"]
+[ext_resource type="Texture2D" uid="uid://bjstikgmafnca" path="res://assets/food-scene.png" id="2_ipk1y"]
 
 [node name="Kitchen" type="Node"]
 script = ExtResource("1_vloss")
+
+[node name="KitchenBackground" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ipk1y")
 
 [node name="kitchenLabel" type="Label" parent="."]
 offset_left = 513.0
@@ -13,18 +19,26 @@ offset_bottom = 30.0
 text = "Kitchen"
 
 [node name="ToFrontFromKitchen" type="Button" parent="."]
-offset_left = 11.0
-offset_top = 322.0
-offset_right = 84.0
-offset_bottom = 353.0
+offset_left = 23.0
+offset_top = 518.0
+offset_right = 96.0
+offset_bottom = 549.0
 text = "To Front"
 
 [node name="ToDrinksFromKitchen" type="Button" parent="."]
-offset_left = 1048.0
-offset_top = 307.0
-offset_right = 1130.0
-offset_bottom = 338.0
+offset_left = 1044.0
+offset_top = 531.0
+offset_right = 1126.0
+offset_bottom = 562.0
 text = "To Drinks"
+
+[node name="FryerButton" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 307.0
+offset_right = 228.0
+offset_bottom = 435.0
+text = "Fry minigame"
 
 [connection signal="pressed" from="ToFrontFromKitchen" to="." method="_on_to_front_from_kitchen_pressed"]
 [connection signal="pressed" from="ToDrinksFromKitchen" to="." method="_on_to_drinks_from_kitchen_pressed"]
+[connection signal="pressed" from="FryerButton" to="." method="_on_fryer_button_pressed"]
