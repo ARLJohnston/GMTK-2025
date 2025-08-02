@@ -13,6 +13,7 @@ func _ready() -> void:
 func _input(event) -> void:
 	if order.size() == 0:
 		queue_free()
+		SceneSwitcher.goto_scene("res://front.tscn")
 		return
 	var key_to_press = order[0]
 	# takes the front of order as the key that is to be pressed and then
