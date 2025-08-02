@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5l5txt2cvfa3"]
+
+[ext_resource type="Script" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ousa6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2642i"]
+
+[node name="CoffeeMakerMinigame" type="Node2D"]
+script = ExtResource("1_gfu5i")
+
+[node name="CoffeeButton" type="Button" parent="."]
+offset_left = 539.0
+offset_top = 71.0
+offset_right = 898.0
+offset_bottom = 228.0
+text = "Coffee"
+
+[node name="ChocolateButton" type="Button" parent="."]
+offset_left = 117.0
+offset_top = 242.0
+offset_right = 484.0
+offset_bottom = 410.0
+text = "Chocolate"
+
+[node name="FoamButton" type="Button" parent="."]
+offset_left = 535.0
+offset_top = 435.0
+offset_right = 902.0
+offset_bottom = 603.0
+text = "Foam"
+
+[node name="MilkButton" type="Button" parent="."]
+offset_left = 534.0
+offset_top = 246.0
+offset_right = 901.0
+offset_bottom = 414.0
+text = "Milk"
+
+[node name="FirstProgressBar" type="ProgressBar" parent="."]
+material = SubResource("CanvasItemMaterial_ousa6")
+offset_left = 251.0
+offset_top = 627.0
+offset_right = 430.0
+offset_bottom = 716.0
+rotation = -1.5708
+theme_override_styles/background = SubResource("StyleBoxEmpty_2642i")
+show_percentage = false
+
+[connection signal="button_down" from="CoffeeButton" to="." method="_on_coffee_button_button_down"]
+[connection signal="button_up" from="CoffeeButton" to="." method="_on_coffee_button_button_up"]
+[connection signal="button_down" from="ChocolateButton" to="." method="_on_chocolate_button_button_down"]
+[connection signal="button_up" from="ChocolateButton" to="." method="_on_chocolate_button_button_up"]
+[connection signal="button_down" from="FoamButton" to="." method="_on_foam_button_button_down"]
+[connection signal="button_up" from="FoamButton" to="." method="_on_foam_button_button_up"]
+[connection signal="button_down" from="MilkButton" to="." method="_on_milk_button_button_down"]
+[connection signal="button_up" from="MilkButton" to="." method="_on_milk_button_button_up"]
