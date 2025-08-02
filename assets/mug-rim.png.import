@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://76vsiaj7omn2"
-path="res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"
+uid="uid://ba4qylmguibx2"
+path="res://.godot/imported/mug-rim.png-75714f270b44d69a701c4c75bf5ba084.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Window.png"
-dest_files=["res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"]
+source_file="res://assets/mug-rim.png"
+dest_files=["res://.godot/imported/mug-rim.png-75714f270b44d69a701c4c75bf5ba084.ctex"]
 
 [params]
 
