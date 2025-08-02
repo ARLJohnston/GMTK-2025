@@ -1,5 +1,7 @@
 class_name Order extends Sprite2D
 
+signal order_complete
+
 enum Orderable {
 	LATTE,
 	CAPPUCCINO,
@@ -53,5 +55,6 @@ func check_order(inventory: Array) -> Array:
 			return [false, inventory]
 		new_inventory.erase(obj)
 		
+	order_complete.emit()
 	self.queue_free()
 	return [true, new_inventory]

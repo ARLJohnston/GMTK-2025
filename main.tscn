@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://6wtr47kj08j5"]
+
+[ext_resource type="Script" uid="uid://cdfqm6pjh04o4" path="res://main.gd" id="1_272bh"]
+[ext_resource type="PackedScene" uid="uid://ce1srid13yslf" path="res://order.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://buj3553hf3p28" path="res://drinks.tscn" id="3_kek77"]
+[ext_resource type="PackedScene" uid="uid://clbk4lwpstgpr" path="res://front.tscn" id="4_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bhe6huph75e3i" path="res://order_mini_game.tscn" id="5_efxa6"]
+[ext_resource type="PackedScene" uid="uid://bxd4c8c0ewoii" path="res://kitchen.tscn" id="6_dg77c"]
+[ext_resource type="PackedScene" path="res://FryerGame.tscn" id="7_ycdy4"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_272bh")
+
+[node name="Order" parent="." instance=ExtResource("2_5vw27")]
+
+[node name="Drinks" parent="." instance=ExtResource("3_kek77")]
+
+[node name="Front" parent="." instance=ExtResource("4_4c57u")]
+
+[node name="OrderMiniGame" parent="Front" instance=ExtResource("5_efxa6")]
+
+[node name="Kitchen" parent="." instance=ExtResource("6_dg77c")]
+
+[node name="FryerMiniGame" parent="Kitchen" instance=ExtResource("7_ycdy4")]
+visible = false

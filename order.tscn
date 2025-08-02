@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://j07riwo7c1fe"]
+[gd_scene load_steps=3 format=3 uid="uid://ce1srid13yslf"]
 
 [ext_resource type="Texture2D" uid="uid://0vbqii8cfyy5" path="res://assets/order.png" id="1_vdalh"]
-[ext_resource type="Script" uid="uid://dj3xprchc5dh1" path="res://order.gd" id="2_4o8cy"]
+[ext_resource type="Script" path="res://order.gd" id="2_4o8cy"]
 
 [node name="Order" type="Node2D"]
 
@@ -10,4 +10,3 @@ position = Vector2(61, 16)
 texture = ExtResource("1_vdalh")
 centered = false
 script = ExtResource("2_4o8cy")
-metadata/_custom_type_script = "uid://dj3xprchc5dh1"
