@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://clbk4lwpstgpr"]
+[gd_scene load_steps=6 format=3 uid="uid://clbk4lwpstgpr"]
 
 [ext_resource type="Script" uid="uid://cer1k7vs136u6" path="res://front.gd" id="1_uekkd"]
 [ext_resource type="Texture2D" uid="uid://bxx8r1c3sj64o" path="res://assets/front-scene.png" id="2_xpgvt"]
 [ext_resource type="Texture2D" uid="uid://bdtnhi0tlk3xv" path="res://assets/order-bubble.png" id="3_7b4sd"]
+[ext_resource type="Texture2D" uid="uid://collvxlivgje1" path="res://assets/RIGHT.png" id="4_ryhjl"]
 [ext_resource type="Texture2D" uid="uid://dusgg1mv5f7tv" path="res://assets/customer-1.png" id="4_xncio"]
 
 [node name="Front" type="Node"]
@@ -18,11 +19,15 @@ position = Vector2(646, 325)
 texture = ExtResource("3_7b4sd")
 
 [node name="ToKitchen" type="Button" parent="."]
-offset_left = 1026.0
-offset_top = 527.0
-offset_right = 1116.0
-offset_bottom = 558.0
+offset_left = 1032.0
+offset_top = 560.0
+offset_right = 1122.0
+offset_bottom = 591.0
 text = "To Kitchen"
+
+[node name="Sprite2D" type="Sprite2D" parent="ToKitchen"]
+position = Vector2(44, 15)
+texture = ExtResource("4_ryhjl")
 
 [node name="FrontLabel" type="Label" parent="."]
 offset_left = 487.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://buj3553hf3p28"]
+[gd_scene load_steps=4 format=3 uid="uid://buj3553hf3p28"]
 
 [ext_resource type="Script" uid="uid://cwn4wtvaw7q58" path="res://drinks.gd" id="1_enbsf"]
 [ext_resource type="Texture2D" uid="uid://dqm7ei6hcb8oo" path="res://assets/coffee-scene.png" id="2_n7rc2"]
+[ext_resource type="Texture2D" uid="uid://dqwi1okawlbqk" path="res://assets/LEFT.png" id="3_8u0ii"]
 
 [node name="Drinks" type="Node"]
 script = ExtResource("1_enbsf")
@@ -12,11 +13,15 @@ offset_bottom = 648.0
 texture = ExtResource("2_n7rc2")
 
 [node name="ToKitchenFromDrinks" type="Button" parent="."]
-offset_left = 15.0
-offset_top = 480.0
-offset_right = 105.0
-offset_bottom = 511.0
+offset_left = 24.0
+offset_top = 560.0
+offset_right = 114.0
+offset_bottom = 591.0
 text = "To Kitchen"
+
+[node name="Sprite2D" type="Sprite2D" parent="ToKitchenFromDrinks"]
+position = Vector2(46, 16)
+texture = ExtResource("3_8u0ii")
 
 [node name="DrinksLabel" type="Label" parent="."]
 offset_left = 493.0
