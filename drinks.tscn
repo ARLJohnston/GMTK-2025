@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://buj3553hf3p28"]
 
-[ext_resource type="Script" uid="uid://cwn4wtvaw7q58" path="res://drinks.gd" id="1_enbsf"]
+[ext_resource type="Script" path="res://drinks.gd" id="1_enbsf"]
 [ext_resource type="Texture2D" uid="uid://dqm7ei6hcb8oo" path="res://assets/coffee-scene.png" id="2_n7rc2"]
 [ext_resource type="Texture2D" uid="uid://dqwi1okawlbqk" path="res://assets/LEFT.png" id="3_8u0ii"]
 
