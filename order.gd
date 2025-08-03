@@ -23,7 +23,8 @@ const neons := [
 	Color(1.0, 0.5, 1.0),  # Neon Light Pink
 ]
 
-var order := {}
+var order := {} 
+var order2 = []
 
 func _init(difficulty: int = 3):
 	for o in Orderable.keys():
@@ -31,7 +32,7 @@ func _init(difficulty: int = 3):
 		
 	for i in range(difficulty):
 		var item = Orderable.keys()[randi() % Orderable.keys().size()]
-		order[item] += 1
+		order[item] += 1   	
 		
 	self_modulate = neons[randi()%neons.size()]
 	var text := "Order:"
@@ -64,7 +65,16 @@ func check_order() -> Array:
 
 	order_complete.emit()
 	self.queue_free()
-	return [true, inventory]
+	return [true, inventory] 
+	
+	
+func return_in_format():  
+	
+	for item in order.keys():  
+		order2.append({"item" : item , "amount" : order[item]}) 
+		
+	return order2
+		
 
 
 func _on_button_pressed() -> void:

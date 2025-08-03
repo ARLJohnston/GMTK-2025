@@ -14,13 +14,14 @@ config/name="GMTK-2025"
 run/main_scene="res://front.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+<<<<<<<Updatedupstreamconfig/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
 SceneSwitcher="*res://scene_switcher.gd"
 Music="*res://music.gd"
 Inventory2="*res://inventory.gd"
-
+Orders2="*res://orders.gd"
 
 [input]
 
