@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6731g7d0snr3"]
 
 [ext_resource type="Texture2D" uid="uid://0vbqii8cfyy5" path="res://assets/order.png" id="1_vdalh"]
-[ext_resource type="Script" path="res://order.gd" id="2_4o8cy"]
+[ext_resource type="Script" uid="uid://dj3xprchc5dh1" path="res://order.gd" id="2_4o8cy"]
 
 [node name="Order" type="Node2D"]
 
-[node name="Order" type="Sprite2D" parent="."]
+[node name="OrderSprite" type="Sprite2D" parent="."]
 position = Vector2(61, 16)
 texture = ExtResource("1_vdalh")
 centered = false
@@ -19,4 +19,4 @@ offset_bottom = 186.0
 text = "complete
 "
 
-[connection signal="pressed" from="Button" to="Order" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="OrderSprite" method="_on_button_pressed"]

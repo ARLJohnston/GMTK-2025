@@ -6,12 +6,20 @@ var orders: Array = []
 var next_order_id: int = 0
 
 func add_order(items: Array) -> void:
+	var scene = load("res://order.tscn")
+	var a = scene.instantiate()
+	var b = a.get_node("OrderSprite")
+	a.z_index = 5
+	Front.add_child(a)
+	
 	var order = {
 		"id": next_order_id,
-		"items": items.duplicate(true) 
+		"items": b.return_in_format()
 	}
 	orders.append(order)
 	next_order_id += 1
+	
+
 
 func remove_order_by_id(order_id: int) -> void:
 	for order in orders:

@@ -32,7 +32,7 @@ func _init(difficulty: int = 3):
 		
 	for i in range(difficulty):
 		var item = Orderable.keys()[randi() % Orderable.keys().size()]
-		order[item] += 1   	
+		order[item] += 1
 		
 	self_modulate = neons[randi()%neons.size()]
 	var text := "Order:"
@@ -41,6 +41,7 @@ func _init(difficulty: int = 3):
 			text += "\n\t- " + o
 		if order[o] > 1:
 			text += "\n\t- %d %ss" % [order[o], o]
+			
 			
 	var label := Label.new()
 	label.position = Vector2(50, 10)
