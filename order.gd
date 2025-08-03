@@ -51,7 +51,6 @@ func _init(difficulty: int = 3):
 	add_child(label)
 
 func check_order():
-	self.queue_free()
 	var order_complete = true
 
 	for item in order:

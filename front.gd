@@ -8,7 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if SceneSwitcher.justExitedOrderminigame():
+		var scene = load("res://order.tscn")
+		var a = scene.instantiate()
+		add_child(a)
+		# create order
 
 
 func _on_to_kitchen_pressed() -> void:

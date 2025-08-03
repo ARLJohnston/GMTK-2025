@@ -25,3 +25,11 @@ func _deferred_goto_scene(path):
 	current_scene = new_scene.instantiate()
 	get_tree().root.add_child(current_scene)
 	
+
+var exited := false
+
+func justExitedOrderminigame() -> bool:
+	if exited:
+		exited = false
+		return true
+	return false
