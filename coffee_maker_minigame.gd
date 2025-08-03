@@ -10,7 +10,7 @@ var first_run : bool = true
 var failed = false  
 var finished = false
 
-@onready var SHOW_ON_END = [$BackButton, $RestartButton]
+@onready var SHOW_ON_END = [$RestartButton]
 
 const COFFEE_COLOR = Color("#6F4E37") 
 const CHOCOLATE_COLOR = Color("#381819")
@@ -47,7 +47,9 @@ var winning_conditions = {
 	]
 } 
 func _ready() -> void: 
-	$Nozzle.hide() 
+	$Nozzle.hide()  
+	
+	$BackButton.show()
 	
 	var opaque_fill_style = StyleBoxFlat.new()
 	opaque_fill_style.bg_color = Color(1, 1, 1, 1) 

@@ -96,6 +96,14 @@ visible = false
 position = Vector2(578, 323)
 texture = ExtResource("8_7xwig")
 
+[node name="BackButton" type="Button" parent="."]
+visible = false
+offset_left = 584.0
+offset_top = 586.0
+offset_right = 956.0
+offset_bottom = 632.0
+text = "Back To Kitchen"
+
 [connection signal="area_entered" from="StrawberryArea" to="StrawberryArea" method="_on_area_entered"]
 [connection signal="donut_dipped" from="StrawberryArea" to="." method="_on_zone_donut_dipped"]
 [connection signal="area_entered" from="ChocolateArea" to="ChocolateArea" method="_on_area_entered"]
@@ -103,3 +111,4 @@ texture = ExtResource("8_7xwig")
 [connection signal="area_entered" from="VanillaArea" to="VanillaArea" method="_on_area_entered"]
 [connection signal="donut_dipped" from="VanillaArea" to="." method="_on_zone_donut_dipped"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

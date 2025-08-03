@@ -18,7 +18,9 @@ var score = 0
 var game_active = false
 var time_left = 0.0
 var flavours = flavoursMap.keys()
-func _ready():
+func _ready(): 
+	
+	$BackButton.show()
 	# Connect all area signals
 	$StrawberryArea.donut_dipped.connect(_on_zone_donut_dipped)
 	$ChocolateArea.donut_dipped.connect(_on_zone_donut_dipped)
@@ -116,3 +118,7 @@ func _on_restart_pressed():
 	score = 0
 	start_new_round()
 	
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.goto_scene("res://kitchen.tscn")
