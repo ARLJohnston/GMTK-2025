@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://clbk4lwpstgpr"]
+[gd_scene load_steps=7 format=3 uid="uid://clbk4lwpstgpr"]
 
 [ext_resource type="Script" path="res://front.gd" id="1_uekkd"]
 [ext_resource type="Texture2D" uid="uid://bxx8r1c3sj64o" path="res://assets/front-scene.png" id="2_xpgvt"]
 [ext_resource type="Texture2D" uid="uid://bdtnhi0tlk3xv" path="res://assets/order-bubble.png" id="3_7b4sd"]
 [ext_resource type="Texture2D" uid="uid://collvxlivgje1" path="res://assets/RIGHT.png" id="4_ryhjl"]
 [ext_resource type="Texture2D" uid="uid://c57w2hcq6k03c" path="res://assets/customer-2.png" id="5_2ypjs"]
+[ext_resource type="FontFile" uid="uid://bxh4lowqjn1g0" path="res://assets/GNF.ttf" id="6_nph6i"]
 
 [node name="Front" type="Node"]
 script = ExtResource("1_uekkd")
@@ -46,6 +47,20 @@ text = "Order Mini Game"
 [node name="Customer" type="Sprite2D" parent="."]
 position = Vector2(576, 320)
 texture = ExtResource("5_2ypjs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 489.0
+offset_top = 493.0
+offset_right = 1008.0
+offset_bottom = 633.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 467.0
+offset_right = 614.0
+offset_bottom = 509.0
+theme_override_fonts/font = ExtResource("6_nph6i")
+text = "Inventory:"
 
 [connection signal="pressed" from="ToKitchen" to="." method="_on_to_kitchen_pressed"]
 [connection signal="pressed" from="ToOrderMiniGame" to="." method="_on_to_order_mini_game_pressed"]
