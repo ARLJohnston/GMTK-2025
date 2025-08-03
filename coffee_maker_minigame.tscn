@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5l5txt2cvfa3"]
+[gd_scene load_steps=13 format=3 uid="uid://c5l5txt2cvfa3"]
 
 [ext_resource type="Script" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
 [ext_resource type="Texture2D" uid="uid://cyh1bykimujp" path="res://assets/coffee-minigame.png" id="2_i7rmr"]
 [ext_resource type="FontFile" uid="uid://bxh4lowqjn1g0" path="res://assets/GNF.ttf" id="3_cvpei"]
+[ext_resource type="Texture2D" uid="uid://co3byxyowuy2l" path="res://assets/perfect_latte.png" id="4_e2kj2"]
 [ext_resource type="Texture2D" uid="uid://cun88olamsjp7" path="res://assets/coffee-rim.png" id="4_ln6rh"]
+[ext_resource type="Texture2D" uid="uid://diauvhcy06va1" path="res://assets/perfect_cappuccino.png" id="6_2dx3b"]
+[ext_resource type="Texture2D" uid="uid://xgtugt2renyw" path="res://assets/perfect_mocha.png" id="7_srnup"]
+[ext_resource type="Texture2D" uid="uid://c1t4edboxfkt4" path="res://assets/perfect_macchiato.png" id="8_57i14"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ousa6"]
 
@@ -22,6 +26,7 @@ offset_left = 6.0
 offset_right = 1158.0
 offset_bottom = 648.0
 texture = ExtResource("2_i7rmr")
+metadata/_edit_use_anchors_ = true
 
 [node name="Nozzle" type="ColorRect" parent="."]
 z_index = -1
@@ -29,6 +34,7 @@ offset_left = 543.0
 offset_top = 214.0
 offset_right = 570.0
 offset_bottom = 485.0
+metadata/_edit_use_anchors_ = true
 
 [node name="FirstProgressBar" type="ProgressBar" parent="."]
 material = SubResource("CanvasItemMaterial_ousa6")
@@ -40,11 +46,22 @@ rotation = -1.5708
 theme_override_styles/background = SubResource("StyleBoxEmpty_2642i")
 theme_override_styles/fill = SubResource("StyleBoxTexture_pc6p3")
 show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="LatteRecipe" type="TextureRect" parent="."]
+offset_left = 18.0
+offset_top = 32.0
+offset_right = 241.0
+offset_bottom = 282.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_e2kj2")
 
 [node name="MugRim" type="TextureRect" parent="."]
+z_index = 1
 offset_right = 1165.0
 offset_bottom = 648.0
 texture = ExtResource("4_ln6rh")
+metadata/_edit_use_anchors_ = true
 
 [node name="CoffeeButton" type="Button" parent="."]
 offset_left = 793.0
@@ -53,6 +70,7 @@ offset_right = 883.0
 offset_bottom = 301.0
 theme_override_fonts/font = ExtResource("3_cvpei")
 text = "Coffee"
+metadata/_edit_use_anchors_ = true
 
 [node name="ChocolateButton" type="Button" parent="."]
 offset_left = 793.0
@@ -61,6 +79,7 @@ offset_right = 883.0
 offset_bottom = 418.0
 theme_override_fonts/font = ExtResource("3_cvpei")
 text = "Chocolate"
+metadata/_edit_use_anchors_ = true
 
 [node name="FoamButton" type="Button" parent="."]
 offset_left = 911.0
@@ -69,6 +88,7 @@ offset_right = 1001.0
 offset_bottom = 411.0
 theme_override_fonts/font = ExtResource("3_cvpei")
 text = "Foam"
+metadata/_edit_use_anchors_ = true
 
 [node name="MilkButton" type="Button" parent="."]
 offset_left = 913.0
@@ -77,6 +97,7 @@ offset_right = 1003.0
 offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("3_cvpei")
 text = "Milk"
+metadata/_edit_use_anchors_ = true
 
 [node name="MessageBackground" type="ColorRect" parent="."]
 visible = false
@@ -86,6 +107,7 @@ offset_top = 62.0
 offset_right = 1021.0
 offset_bottom = 575.0
 color = Color(0.733333, 0.32549, 0.835294, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="FailedLabel" type="Label" parent="."]
 visible = false
@@ -99,6 +121,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_3cpj4")
 text = "FAILED ❌ "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SuccessLabel" type="Label" parent="."]
 visible = false
@@ -112,6 +135,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_3cpj4")
 text = "SUCCESS ✅"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="RestartButton" type="Button" parent="."]
 visible = false
@@ -136,6 +160,7 @@ offset_top = 446.0
 offset_right = 617.0
 offset_bottom = 453.0
 color = Color(0.831373, 0.521569, 0.909804, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="25mil3" type="ColorRect" parent="."]
 z_index = 50
@@ -144,6 +169,7 @@ offset_top = 370.0
 offset_right = 617.0
 offset_bottom = 377.0
 color = Color(0.830749, 0.52261, 0.911128, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="25mil2" type="ColorRect" parent="."]
 z_index = 50
@@ -152,6 +178,7 @@ offset_top = 406.0
 offset_right = 617.0
 offset_bottom = 413.0
 color = Color(0.831373, 0.521569, 0.909804, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="25PercentLabel" type="Label" parent="."]
 z_index = 50
@@ -161,6 +188,7 @@ offset_right = 618.0
 offset_bottom = 443.0
 theme_override_colors/font_color = Color(0.831373, 0.521569, 0.909804, 1)
 text = "25%"
+metadata/_edit_use_anchors_ = true
 
 [node name="50PercentLabel" type="Label" parent="."]
 z_index = 50
@@ -170,6 +198,7 @@ offset_right = 617.0
 offset_bottom = 405.0
 theme_override_colors/font_color = Color(0.831373, 0.521569, 0.909804, 1)
 text = "50%"
+metadata/_edit_use_anchors_ = true
 
 [node name="75PercentLabel" type="Label" parent="."]
 z_index = 50
@@ -179,6 +208,84 @@ offset_right = 618.0
 offset_bottom = 368.0
 theme_override_colors/font_color = Color(0.831373, 0.521569, 0.909804, 1)
 text = "75%"
+metadata/_edit_use_anchors_ = true
+
+[node name="LatteRecipeLabel" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 160.0
+offset_right = 135.0
+offset_bottom = 183.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Latte"
+horizontal_alignment = 1
+
+[node name="CappuccinoRecipeLabel" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 327.0
+offset_right = 134.0
+offset_bottom = 350.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Cappuccino
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MacchiatoRecipeLabel" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 474.0
+offset_right = 131.0
+offset_bottom = 497.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Macchiato
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MochaRecipeLabel" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 610.0
+offset_right = 127.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("3_cvpei")
+text = "Mocha
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CappuccinoRecipe" type="TextureRect" parent="."]
+offset_left = 10.0
+offset_top = 191.0
+offset_right = 258.0
+offset_bottom = 448.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_2dx3b")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 145.0
+offset_bottom = 28.0
+text = "Make a perfect ...
+"
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 17.0
+offset_top = 502.0
+offset_right = 240.0
+offset_bottom = 752.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_srnup")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 19.0
+offset_top = 352.0
+offset_right = 242.0
+offset_bottom = 602.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_57i14")
+stretch_mode = 2
 
 [connection signal="button_down" from="CoffeeButton" to="." method="_on_coffee_button_button_down"]
 [connection signal="button_up" from="CoffeeButton" to="." method="_on_coffee_button_button_up"]
