@@ -166,7 +166,7 @@ func sum() -> float:
 			
 	
 func generate_new_bar(): 
-	if (first_run): 
+	if (first_run || layers.size() == 0): 
 		first_run = false 
 		return
 		
@@ -283,7 +283,9 @@ func _on_restart_button_pressed() -> void:
 	$FirstProgressBar.value = 0 
 	for progress_bar in progress_bars: 
 		progress_bar.hide() 
-	progress_bars = []
+	progress_bars = [] 
+	current_bar = $FirstProgressBar 
+	finished = false
 
 func _on_back_button_pressed() -> void:
 	SceneSwitcher.goto_scene("res://drinks.tscn")
