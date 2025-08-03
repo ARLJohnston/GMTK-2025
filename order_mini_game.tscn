@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhe6huph75e3i"]
+[gd_scene load_steps=9 format=3 uid="uid://bhe6huph75e3i"]
 
 [ext_resource type="Script" path="res://order_mini_game.gd" id="1_ek375"]
 [ext_resource type="Texture2D" uid="uid://bxx8r1c3sj64o" path="res://assets/front-scene.png" id="2_t770h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://collvxlivgje1" path="res://assets/RIGHT.png" id="5_qb3q3"]
 [ext_resource type="Texture2D" uid="uid://cb3y75w4t53sb" path="res://assets/UP.png" id="6_l5iav"]
 [ext_resource type="Texture2D" uid="uid://dxpc56d0s7ujs" path="res://assets/DOWN.png" id="7_hqo7n"]
+[ext_resource type="Texture2D" uid="uid://c57w2hcq6k03c" path="res://assets/customer-2.png" id="8_agl04"]
 
 [node name="OrderMiniGame" type="Node"]
 script = ExtResource("1_ek375")
@@ -39,3 +40,18 @@ texture = ExtResource("6_l5iav")
 [node name="Key4" type="Sprite2D" parent="."]
 position = Vector2(1032, 224)
 texture = ExtResource("7_hqo7n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_agl04")
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 517.0
+offset_top = 509.0
+offset_right = 1097.0
+offset_bottom = 586.0
+theme_override_font_sizes/font_size = 40
+text = "Don't understand ya. Next ! "
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -57,3 +57,7 @@ func key_order_generator() -> Array:
 func change_sprite_texture(sprite,key):
 	var texture = load("res://assets/"+key+".png")
 	sprite.texture = texture
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.goto_scene("res://front.tscn")
