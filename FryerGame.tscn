@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://ue543vhxos6b"]
 
-[ext_resource type="Script" path="res://FryerMain.gd" id="1_bc6tp"]
+[ext_resource type="Script" uid="uid://clikivr8c6yxt" path="res://FryerMain.gd" id="1_bc6tp"]
 [ext_resource type="Texture2D" uid="uid://dikl2awui16rh" path="res://assets/fryer-game.png" id="2_htech"]
 [ext_resource type="Texture2D" uid="uid://cdpfwsprwj52f" path="res://assets/donut.png" id="3_svysp"]
-[ext_resource type="Script" path="res://donut_script.gd" id="4_htech"]
-[ext_resource type="Script" path="res://strawberry_area.gd" id="5_svysp"]
-[ext_resource type="Script" path="res://chocolate_area.gd" id="6_pax3n"]
-[ext_resource type="Script" path="res://vanilla_area.gd" id="7_nkmwh"]
+[ext_resource type="Script" uid="uid://7prxomgpf5pp" path="res://donut_script.gd" id="4_htech"]
+[ext_resource type="Script" uid="uid://bd08u4g6kdqur" path="res://strawberry_area.gd" id="5_svysp"]
+[ext_resource type="Script" uid="uid://bsalp1na481kp" path="res://chocolate_area.gd" id="6_pax3n"]
+[ext_resource type="Script" uid="uid://cniqk8i5skh60" path="res://vanilla_area.gd" id="7_nkmwh"]
 [ext_resource type="Texture2D" uid="uid://cyh1bykimujp" path="res://assets/coffee-minigame.png" id="8_7xwig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkmwh"]
