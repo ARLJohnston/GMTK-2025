@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5l5txt2cvfa3"]
+[gd_scene load_steps=9 format=3 uid="uid://mb7f2o4t1bfk"]
 
 [ext_resource type="Script" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
 [ext_resource type="Texture2D" uid="uid://cyh1bykimujp" path="res://assets/coffee-minigame.png" id="2_i7rmr"]

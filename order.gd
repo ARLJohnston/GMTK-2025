@@ -5,10 +5,10 @@ signal order_complete
 enum Orderable {
 	LATTE,
 	CAPPUCCINO,
-	MACCHIATO,
 	MOCHA,
+	MACCHIATO,
 	DONUT,
-}
+} 
 
 const neons := [
 	Color(1.0, 0.0, 0.0),  # Neon Red
@@ -47,14 +47,25 @@ func _init(difficulty: int = 3):
 	label.text = text
 	add_child(label)
 
-func check_order(inventory: Array) -> Array:
-	var new_inventory = inventory
-	
-	for obj in order:
-		if obj not in new_inventory:
+func check_order() -> Array:
+	var inventory = Inventory2.inventory.duplicate()
+	var order_complete = true
+
+	for pair in order:
+		var item = pair[0]
+		var amount = pair[1]
+
+		if not Inventory2._has_in_inventory(item, amount):
 			return [false, inventory]
-		new_inventory.erase(obj)
-		
+
+		inventory[item] -= amount
+		if inventory[item] <= 0:
+			inventory.erase(item)
+
 	order_complete.emit()
 	self.queue_free()
-	return [true, new_inventory]
+	return [true, inventory]
+
+
+func _on_button_pressed() -> void:
+	check_order()

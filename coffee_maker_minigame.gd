@@ -145,7 +145,13 @@ func evaluate_drink() -> void:
 		if is_drink_complete:
 			print("✅ Matched drink:", Drink.keys()[drink]) 
 			$SuccessLabel.show() 
-			$MessageBackground.show() 
+			$MessageBackground.show()   
+			 
+			
+			Inventory2._add_to_inventory(drink, 1)  
+			Inventory2.print_inventory()
+			#
+		
 			showOnEnd()
 		else:
 			print("❌ Drink did not match.")
