@@ -97,7 +97,9 @@ func _on_timer_timeout():
 	print("Time's up! Score: ", score)
 	game_over("Game Over! Final Score: " + str(score))
 
-func game_over(winMessage):
+func game_over(winMessage): 
+	Inventory2._add_to_inventory(Order.Orderable.DONUT , score) 
+	Inventory2.print_inventory()
 	queue_free()
 	SceneSwitcher.goto_scene("res://kitchen.tscn")
 	return

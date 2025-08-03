@@ -6,11 +6,11 @@ var last_ingredient : CoffeeIngredient.Ingredient
 var first_ingredient : CoffeeIngredient.Ingredient
 var is_flowing : bool 
 var current_ingredient : CoffeeIngredient.Ingredient   
-var first_run : bool = true 
+var first_run : bool = true
 var failed = false  
 var finished = false
 
-@onready var SHOW_ON_END = [$BackButton, $RestartButton]
+@onready var SHOW_ON_END = [$RestartButton]
 
 const COFFEE_COLOR = Color("#6F4E37") 
 const CHOCOLATE_COLOR = Color("#381819")
@@ -44,6 +44,7 @@ var winning_conditions = {
 	Drink.MACCHIATO: [
 		WinCondition.new(0.25, 0.35, CoffeeIngredient.Ingredient.COFFEE),
 		WinCondition.new(0.65, 0.75, CoffeeIngredient.Ingredient.MILK_FOAM),
+
 	]
 } 
 func _ready() -> void: 
@@ -55,7 +56,9 @@ func _ready() -> void:
 	$FirstProgressBar.add_theme_stylebox_override("fill", opaque_fill_style)
 	$FailedLabel.hide()
 	$MessageBackground.hide() 
-	$SuccessLabel.hide() 
+	$SuccessLabel.hide()  
+	
+	$BackButton.show()
 	
 	hideOnRestart()
 	
@@ -131,13 +134,11 @@ func evaluate_drink() -> void:
 
 			var actual_ingredient_str = CoffeeIngredient.Ingredient.keys()[layer.ingredient]
 			var expected_ingredient_str = CoffeeIngredient.Ingredient.keys()[condition.ingredient]
-
-			#print("Checking layer", i)
-			#print("- Ingredient:", actual_ingredient_str, " | Expected:", expected_ingredient_str)
 			print("- Percentage:", layer.percentage, " | Expected:", condition.lower_bound * 100, "to", condition.upper_bound * 100)
 
 			if layer.ingredient != condition.ingredient:
 				is_drink_complete = false 
+
 				#print("❌ Ingredient mismatch at layer", i)
 
 			if layer.percentage < condition.lower_bound * 100 or layer.percentage > condition.upper_bound * 100: 
@@ -146,8 +147,10 @@ func evaluate_drink() -> void:
 
 		if is_drink_complete:
 			print("✅ Matched drink:", Drink.keys()[drink]) 
-			#$SuccessLabel.show() 
-			#$MessageBackground.show() 
+			$SuccessLabel.show() 
+			$MessageBackground.show()  
+			Inventory2._add_to_inventory(drink , 1) 
+			Inventory2.print_inventory()
 			showOnEnd()
 			finished = true
 		else:
@@ -163,7 +166,7 @@ func sum() -> float:
 			
 	
 func generate_new_bar(): 
-	if (first_run): 
+	if (first_run || layers.size() == 0): 
 		first_run = false 
 		return
 		
@@ -208,10 +211,10 @@ func add_ingredient(delta: float , ingredient : CoffeeIngredient.Ingredient) -> 
 	
 	if (last_ingredient == ingredient and layers.size() > 0):  		 
 		layers[-1].percentage += delta * FLOW_RATE 
+
 		print(layers[-1].percentage)
 	else: 
 		layers.append(CoffeeIngredient.new(ingredient, 0)) 
-		
 		
 	last_ingredient = ingredient
 		  
@@ -280,8 +283,9 @@ func _on_restart_button_pressed() -> void:
 	$FirstProgressBar.value = 0 
 	for progress_bar in progress_bars: 
 		progress_bar.hide() 
-	progress_bars = []
-
+	progress_bars = [] 
+	current_bar = $FirstProgressBar 
+	finished = false
 
 func _on_back_button_pressed() -> void:
 	SceneSwitcher.goto_scene("res://drinks.tscn")

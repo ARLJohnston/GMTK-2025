@@ -12,7 +12,9 @@ func _ready() -> void:
 
 func _input(event) -> void:
 	if order.size() == 0:
-		queue_free()
+		queue_free()  
+		Orders2.add_order() 
+		Orders2.print_orders()
 		SceneSwitcher.goto_scene("res://front.tscn")
 		return
 	var key_to_press = order[0]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhe6huph75e3i"]
+[gd_scene load_steps=8 format=3 uid="uid://bbtvtmv64e3bu"]
 
-[ext_resource type="Script" uid="uid://cuvccsusg32ng" path="res://order_mini_game.gd" id="1_ek375"]
+[ext_resource type="Script" path="res://order_mini_game.gd" id="1_ek375"]
 [ext_resource type="Texture2D" uid="uid://bxx8r1c3sj64o" path="res://assets/front-scene.png" id="2_t770h"]
 [ext_resource type="Texture2D" uid="uid://bdtnhi0tlk3xv" path="res://assets/order-bubble.png" id="3_dqvjn"]
 [ext_resource type="Texture2D" uid="uid://dqwi1okawlbqk" path="res://assets/LEFT.png" id="4_kdgk1"]
