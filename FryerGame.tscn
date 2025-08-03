@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ue543vhxos6b"]
+[gd_scene load_steps=13 format=3 uid="uid://ue543vhxos6b"]
 
 [ext_resource type="Script" uid="uid://clikivr8c6yxt" path="res://FryerMain.gd" id="1_bc6tp"]
 [ext_resource type="Texture2D" uid="uid://dikl2awui16rh" path="res://assets/fryer-game.png" id="2_htech"]
@@ -7,15 +7,16 @@
 [ext_resource type="Script" uid="uid://bd08u4g6kdqur" path="res://strawberry_area.gd" id="5_svysp"]
 [ext_resource type="Script" uid="uid://bsalp1na481kp" path="res://chocolate_area.gd" id="6_pax3n"]
 [ext_resource type="Script" uid="uid://cniqk8i5skh60" path="res://vanilla_area.gd" id="7_nkmwh"]
+[ext_resource type="Texture2D" uid="uid://cyh1bykimujp" path="res://assets/coffee-minigame.png" id="8_7xwig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkmwh"]
-size = Vector2(356.5, 173.5)
+size = Vector2(285.25, 148.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xwig"]
-size = Vector2(358, 161)
+size = Vector2(287, 134.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu8ra"]
-size = Vector2(355.5, 206)
+size = Vector2(275.75, 161)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nkmwh"]
 radius = 44.0
@@ -24,8 +25,8 @@ radius = 44.0
 script = ExtResource("1_bc6tp")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(572.557, 326.556)
-scale = Vector2(1.302, 1.29149)
+position = Vector2(573.268, 320.779)
+scale = Vector2(0.999492, 0.991424)
 texture = ExtResource("2_htech")
 
 [node name="FlavourLabel" type="RichTextLabel" parent="."]
@@ -39,25 +40,25 @@ bbcode_enabled = true
 script = ExtResource("5_svysp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StrawberryArea"]
-position = Vector2(961.75, 106.25)
+position = Vector2(877.375, 149.375)
 shape = SubResource("RectangleShape2D_nkmwh")
 
 [node name="ChocolateArea" type="Area2D" parent="."]
 script = ExtResource("6_pax3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChocolateArea"]
-position = Vector2(961, 551.5)
+position = Vector2(870.5, 496.75)
 shape = SubResource("RectangleShape2D_7xwig")
 
 [node name="VanillaArea" type="Area2D" parent="."]
 script = ExtResource("7_nkmwh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VanillaArea"]
-position = Vector2(961, 335)
+position = Vector2(872.125, 327.5)
 shape = SubResource("RectangleShape2D_bu8ra")
 
 [node name="Donut" type="Area2D" parent="."]
-position = Vector2(156, 257)
+position = Vector2(250, 300)
 script = ExtResource("4_htech")
 
 [node name="Sprite" type="Sprite2D" parent="Donut"]
@@ -72,23 +73,28 @@ shape = SubResource("CircleShape2D_nkmwh")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TimerLabel" type="Label" parent="."]
-offset_left = 23.0
-offset_top = 143.0
-offset_right = 108.0
-offset_bottom = 182.0
+offset_left = 304.0
+offset_top = 172.0
+offset_right = 389.0
+offset_bottom = 211.0
 
 [node name="RestartButton" type="Button" parent="."]
-offset_left = 17.0
-offset_top = 138.0
-offset_right = 109.0
-offset_bottom = 181.0
+offset_left = 142.0
+offset_top = 173.0
+offset_right = 234.0
+offset_bottom = 216.0
 text = "Restart"
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 131.0
-offset_top = 144.0
-offset_right = 224.0
-offset_bottom = 185.0
+offset_left = 212.0
+offset_top = 170.0
+offset_right = 305.0
+offset_bottom = 211.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(578, 323)
+texture = ExtResource("8_7xwig")
 
 [connection signal="area_entered" from="StrawberryArea" to="StrawberryArea" method="_on_area_entered"]
 [connection signal="donut_dipped" from="StrawberryArea" to="." method="_on_zone_donut_dipped"]
