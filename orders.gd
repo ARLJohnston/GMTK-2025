@@ -5,13 +5,16 @@ var orders: Array = []
 
 var next_order_id: int = 0
 
-func add_order(items: Array) -> void:
+func add_order() -> void:
 	var scene = load("res://order.tscn")
 	var a = scene.instantiate()
 	var b = a.get_node("OrderSprite")
-	a.z_index = 5
+	a.z_index = 1
+	b.z_index = 2
+	var c = b.get_node("Button")
+	c.z_index = 3
 	Front.add_child(a)
-	
+		
 	var order = {
 		"id": next_order_id,
 		"items": b.return_in_format()

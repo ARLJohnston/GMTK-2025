@@ -25,6 +25,7 @@ const neons := [
 
 var order := {} 
 var order2 = []
+var label := Label.new()
 
 func _init(difficulty: int = 3):
 	for o in Orderable.keys():
@@ -43,31 +44,27 @@ func _init(difficulty: int = 3):
 			text += "\n\t- %d %ss" % [order[o], o]
 			
 			
-	var label := Label.new()
 	label.position = Vector2(50, 10)
 	label.modulate = Color.BLACK
 	label.text = text
 	add_child(label)
 
-func check_order() -> Array:
-	var inventory = Inventory2.inventory.duplicate()
+func check_order():
+	self.queue_free()
 	var order_complete = true
 
-	for pair in order:
-		var item = pair[0]
-		var amount = pair[1]
+	for item in order:
+		if not (Inventory2.inventory.has(item) and Inventory2.inventory[item] >= order[item]):
+			return
 
-		if not Inventory2._has_in_inventory(item, amount):
-			return [false, inventory]
-
-		inventory[item] -= amount
-		if inventory[item] <= 0:
-			inventory.erase(item)
+	for item in order:
+		Inventory2.inventory[item] -= order[item]
+		if Inventory2.inventory[item] <= 0:
+			Inventory2.inventory.erase(item)
 
 	order_complete.emit()
+	Score.inc()
 	self.queue_free()
-	return [true, inventory] 
-	
 	
 func return_in_format():  
 	

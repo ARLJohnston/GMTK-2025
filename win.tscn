@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgyqqhqir57wq"]
+
+[ext_resource type="FontFile" uid="uid://bxh4lowqjn1g0" path="res://assets/GNF.ttf" id="1_wao2c"]
+
+[node name="Win" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1145.0
+offset_bottom = 645.0
+theme_override_fonts/font = ExtResource("1_wao2c")
+theme_override_font_sizes/font_size = 100
+text = "YOU IS WINNER"
+horizontal_alignment = 1
+vertical_alignment = 1
