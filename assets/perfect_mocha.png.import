@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpl6ko2gatgum"
-path="res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"
+uid="uid://xgtugt2renyw"
+path="res://.godot/imported/perfect_mocha.png-2bfd06a18018bcc7852b21e7448c540c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Window.png"
-dest_files=["res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"]
+source_file="res://assets/perfect_mocha.png"
+dest_files=["res://.godot/imported/perfect_mocha.png-2bfd06a18018bcc7852b21e7448c540c.ctex"]
 
 [params]
 

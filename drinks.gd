@@ -14,3 +14,7 @@ func _process(delta: float) -> void:
 func _on_to_kitchen_from_drinks_pressed() -> void:
 	SceneSwitcher.goto_scene("res://kitchen.tscn")
 	
+
+
+func _on_coffee_gaming_pressed() -> void:
+		SceneSwitcher.goto_scene("res://coffee_maker_minigame.tscn")

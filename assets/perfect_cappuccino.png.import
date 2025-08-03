@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpl6ko2gatgum"
-path="res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"
+uid="uid://diauvhcy06va1"
+path="res://.godot/imported/perfect_cappuccino.png-9ac41c13690d74b148e7d837a63b143d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Window.png"
-dest_files=["res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"]
+source_file="res://assets/perfect_cappuccino.png"
+dest_files=["res://.godot/imported/perfect_cappuccino.png-9ac41c13690d74b148e7d837a63b143d.ctex"]
 
 [params]
 

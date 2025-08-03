@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpl6ko2gatgum"
-path="res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"
+uid="uid://co3byxyowuy2l"
+path="res://.godot/imported/perfect_latte.png-139cf5195d7f0a02bdc3502d33b984b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Window.png"
-dest_files=["res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"]
+source_file="res://assets/perfect_latte.png"
+dest_files=["res://.godot/imported/perfect_latte.png-139cf5195d7f0a02bdc3502d33b984b1.ctex"]
 
 [params]
 

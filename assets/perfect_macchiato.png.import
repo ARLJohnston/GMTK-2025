@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpl6ko2gatgum"
-path="res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"
+uid="uid://c1t4edboxfkt4"
+path="res://.godot/imported/perfect_macchiato.png-3364546d7fc1de8e3815f50db14dbd26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Window.png"
-dest_files=["res://.godot/imported/Window.png-9532376ee2fc6ab97411f95e43043acb.ctex"]
+source_file="res://assets/perfect_macchiato.png"
+dest_files=["res://.godot/imported/perfect_macchiato.png-3364546d7fc1de8e3815f50db14dbd26.ctex"]
 
 [params]
 
