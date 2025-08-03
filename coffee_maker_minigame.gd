@@ -6,7 +6,7 @@ var last_ingredient : CoffeeIngredient.Ingredient
 var first_ingredient : CoffeeIngredient.Ingredient
 var is_flowing : bool 
 var current_ingredient : CoffeeIngredient.Ingredient   
-var first_run : bool = tru
+var first_run : bool = true
 var failed = false  
 var finished = false
 
@@ -145,8 +145,10 @@ func evaluate_drink() -> void:
 
 		if is_drink_complete:
 			print("✅ Matched drink:", Drink.keys()[drink]) 
-			#$SuccessLabel.show() 
-			#$MessageBackground.show() 
+			$SuccessLabel.show() 
+			$MessageBackground.show()  
+			Inventory2._add_to_inventory(drink , 1) 
+			Inventory2.print_inventory()
 			showOnEnd()
 			finished = true
 		else:
@@ -207,10 +209,10 @@ func add_ingredient(delta: float , ingredient : CoffeeIngredient.Ingredient) -> 
 	
 	if (last_ingredient == ingredient and layers.size() > 0):  		 
 		layers[-1].percentage += delta * FLOW_RATE 
+
 		print(layers[-1].percentage)
 	else: 
 		layers.append(CoffeeIngredient.new(ingredient, 0)) 
-		
 		
 	last_ingredient = ingredient
 		  

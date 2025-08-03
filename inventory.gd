@@ -15,7 +15,8 @@ func _has_in_inventory(item: Order.Orderable, amount: int = 1) -> bool:
 		
 func print_inventory() -> void:  
 	for item in inventory.keys(): 
-		print(" inventory " , Order.Orderable.keys()[item])
+		print(" inventory " , Order.Orderable.keys()[item]) 
+		print(inventory[item])
 		
 
 func _remove_from_inventory(item, amount) -> void:
