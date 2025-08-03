@@ -281,3 +281,7 @@ func _on_restart_button_pressed() -> void:
 	for progress_bar in progress_bars: 
 		progress_bar.hide() 
 	progress_bars = []
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.goto_scene("res://drinks.tscn")

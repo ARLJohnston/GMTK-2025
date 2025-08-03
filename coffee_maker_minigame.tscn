@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c5l5txt2cvfa3"]
 
-[ext_resource type="Script" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
+[ext_resource type="Script" uid="uid://bdamhubawqa2s" path="res://coffee_maker_minigame.gd" id="1_gfu5i"]
 [ext_resource type="Texture2D" uid="uid://cyh1bykimujp" path="res://assets/coffee-minigame.png" id="2_i7rmr"]
 [ext_resource type="FontFile" uid="uid://bxh4lowqjn1g0" path="res://assets/GNF.ttf" id="3_cvpei"]
 [ext_resource type="Texture2D" uid="uid://co3byxyowuy2l" path="res://assets/perfect_latte.png" id="4_e2kj2"]
@@ -296,3 +296,4 @@ stretch_mode = 2
 [connection signal="button_down" from="MilkButton" to="." method="_on_milk_button_button_down"]
 [connection signal="button_up" from="MilkButton" to="." method="_on_milk_button_button_up"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
