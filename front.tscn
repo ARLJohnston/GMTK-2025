@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://clbk4lwpstgpr"]
+[gd_scene load_steps=10 format=3 uid="uid://clbk4lwpstgpr"]
 
 [ext_resource type="Script" path="res://front.gd" id="1_uekkd"]
 [ext_resource type="Texture2D" uid="uid://bxx8r1c3sj64o" path="res://assets/front-scene.png" id="2_xpgvt"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://collvxlivgje1" path="res://assets/RIGHT.png" id="4_ryhjl"]
 [ext_resource type="Texture2D" uid="uid://c57w2hcq6k03c" path="res://assets/customer-2.png" id="5_2ypjs"]
 [ext_resource type="FontFile" uid="uid://bxh4lowqjn1g0" path="res://assets/GNF.ttf" id="6_nph6i"]
+[ext_resource type="Texture2D" uid="uid://qh87uki54u2i" path="res://assets/order.png" id="7_een00"]
+[ext_resource type="Script" path="res://order.gd" id="8_modxe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve7pk"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Front" type="Node"]
 script = ExtResource("1_uekkd")
@@ -62,5 +67,29 @@ offset_bottom = 509.0
 theme_override_fonts/font = ExtResource("6_nph6i")
 text = "Inventory:"
 
+[node name="OrderSprite" type="Sprite2D" parent="."]
+position = Vector2(61, 16)
+texture = ExtResource("7_een00")
+centered = false
+script = ExtResource("8_modxe")
+
+[node name="Button" type="Button" parent="OrderSprite"]
+top_level = true
+z_index = 50
+offset_left = 130.0
+offset_top = 143.0
+offset_right = 249.0
+offset_bottom = 186.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_ve7pk")
+text = "complete
+"
+
+[node name="OrderLabel" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 43.0
+offset_right = 279.0
+offset_bottom = 120.0
+
 [connection signal="pressed" from="ToKitchen" to="." method="_on_to_kitchen_pressed"]
 [connection signal="pressed" from="ToOrderMiniGame" to="." method="_on_to_order_mini_game_pressed"]
+[connection signal="pressed" from="OrderSprite/Button" to="OrderSprite" method="_on_button_pressed"]

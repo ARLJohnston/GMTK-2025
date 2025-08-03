@@ -28,7 +28,7 @@ var order := {}
 var order2 = []
 var label := Label.new()
 
-func _init(difficulty: int = 3):
+func add_order(difficulty : int = 2):
 	for o in Orderable.keys():
 		order[o] = 0
 		
@@ -45,10 +45,11 @@ func _init(difficulty: int = 3):
 			text += "\n\t- %d %ss" % [order[o], o]
 			
 			
-	label.position = Vector2(50, 10)
-	label.modulate = Color.BLACK
-	label.text = text
-	add_child(label)
+			
+			
+	return text
+	#add_child(label)
+	
 
 func check_order():
 	var order_complete = true
@@ -62,8 +63,7 @@ func check_order():
 		if Inventory2.inventory[item] <= 0:
 			Inventory2.inventory.erase(item)
 
-	order_complete.emit()
-	Score.inc()
+	#Score.inc()
 	self.queue_free()
 	
 func return_in_format():  

@@ -1,15 +1,27 @@
 extends Node
 
-@onready var inventory_container: VBoxContainer = $VBoxContainer
+@onready var inventory_container: VBoxContainer = $VBoxContainer 
+
 
 func _ready() -> void:
-	update_inventory_display()
+	update_inventory_display()  
+	
+	
+	$OrderSprite.hide() 
+	$OrderLabel.hide()
 
 func _process(delta: float) -> void:
 	if SceneSwitcher.justExitedOrderminigame():
-		var scene = load("res://order.tscn")
-		var a = scene.instantiate()
-		add_child(a)
+		#var scene = load("res://order.tscn")
+		#var a = scene.instantiate()
+		#add_child(a) 
+		var text = Order2.add_order(3)  
+		print("there is new order")
+		$OrderLabel.modulate = Color.BLACK
+		$OrderLabel.text = text 
+		$OrderSprite.show() 
+		$OrderLabel.show()
+		
 		update_inventory_display()
 
 func update_inventory_display() -> void:
