@@ -17,6 +17,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 SceneSwitcher="*res://scene_switcher.gd"
+Music="*res://music.gd"
 
 [input]
 
