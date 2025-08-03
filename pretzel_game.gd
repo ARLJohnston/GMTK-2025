@@ -148,8 +148,8 @@ func _input(event):
 					if successful_traces == 4:
 						game_over = true
 						display_message("All traces complete! Game Over!", Color.GREEN)
-						#Inventory2._add_to_inventory(Order.Orderable.PRETZEL,1) 
-						#Inventory2.print_inventory()
+						Inventory2._add_to_inventory(Order.Orderable.PRETZEL,1) 
+						Inventory2.print_inventory()
 						
 				else:
 					display_message("Failure! Try again.", Color.RED)

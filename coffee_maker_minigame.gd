@@ -146,8 +146,11 @@ func evaluate_drink() -> void:
 
 		if is_drink_complete:
 			print("✅ Matched drink:", Drink.keys()[drink]) 
-			#$SuccessLabel.show() 
-			#$MessageBackground.show() 
+			$SuccessLabel.show() 
+			$MessageBackground.show()  
+			
+			Inventory2._add_to_inventory(drink,1) 
+			Inventory2.print_inventory()
 			showOnEnd()
 			finished = true
 		else:
@@ -280,7 +283,9 @@ func _on_restart_button_pressed() -> void:
 	$FirstProgressBar.value = 0 
 	for progress_bar in progress_bars: 
 		progress_bar.hide() 
-	progress_bars = []
+	progress_bars = [] 
+	current_bar = $FirstProgressBar 
+	finished = false
 
 
 func _on_back_button_pressed() -> void:

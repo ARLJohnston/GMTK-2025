@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cratm2aegsfnb"]
+[gd_scene load_steps=3 format=3 uid="uid://cl1ctat21yy0y"]
 
 [ext_resource type="Script" path="res://pretzel_game.gd" id="1_45q84"]
 [ext_resource type="Texture2D" uid="uid://ckgr7m3awyxmf" path="res://assets/pretzel-game.png" id="2_ww17q"]
