@@ -21,3 +21,7 @@ func _on_to_drinks_from_kitchen_pressed() -> void:
 
 func _on_fryer_button_pressed() -> void:
 	SceneSwitcher.goto_scene("res://FryerGame.tscn")
+
+
+func _on_pretzel_button_pressed() -> void:
+	SceneSwitcher.goto_scene("res://pretzel_game.tscn")

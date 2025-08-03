@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxd4c8c0ewoii"]
 
-[ext_resource type="Script" uid="uid://brc78ihy0we0j" path="res://kitchen.gd" id="1_vloss"]
+[ext_resource type="Script" path="res://kitchen.gd" id="1_vloss"]
 [ext_resource type="Texture2D" uid="uid://bjstikgmafnca" path="res://assets/food-scene.png" id="2_ipk1y"]
 [ext_resource type="Texture2D" uid="uid://dqwi1okawlbqk" path="res://assets/LEFT.png" id="3_kdutl"]
 [ext_resource type="Texture2D" uid="uid://collvxlivgje1" path="res://assets/RIGHT.png" id="4_7yojt"]
@@ -47,9 +47,18 @@ offset_left = 5.0
 offset_top = 307.0
 offset_right = 228.0
 offset_bottom = 435.0
-theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+
+[node name="PretzelButton" type="Button" parent="."]
+offset_left = 775.0
+offset_top = 288.0
+offset_right = 902.0
+offset_bottom = 328.0
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 
 [connection signal="pressed" from="ToFrontFromKitchen" to="." method="_on_to_front_from_kitchen_pressed"]
 [connection signal="pressed" from="ToDrinksFromKitchen" to="." method="_on_to_drinks_from_kitchen_pressed"]
 [connection signal="pressed" from="FryerButton" to="." method="_on_fryer_button_pressed"]
+[connection signal="pressed" from="PretzelButton" to="." method="_on_pretzel_button_pressed"]
