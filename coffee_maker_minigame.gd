@@ -7,7 +7,8 @@ var first_ingredient : CoffeeIngredient.Ingredient
 var is_flowing : bool 
 var current_ingredient : CoffeeIngredient.Ingredient   
 var first_run : bool = true 
-var failed = false 
+var failed = false  
+var finished = false
 
 @onready var SHOW_ON_END = [$BackButton, $RestartButton]
 
@@ -31,19 +32,18 @@ var winning_conditions = {
 		WinCondition.new(0.10, 0.15, CoffeeIngredient.Ingredient.MILK_FOAM)
 	],
 	Drink.CAPPUCCINO: [
-		WinCondition.new(0.30, 0.40, CoffeeIngredient.Ingredient.COFFEE),
-		WinCondition.new(0.40, 0.50, CoffeeIngredient.Ingredient.MILK),
-		WinCondition.new(0.10, 0.20, CoffeeIngredient.Ingredient.MILK_FOAM)
+		WinCondition.new(0.30, 0.35, CoffeeIngredient.Ingredient.COFFEE),
+		WinCondition.new(0.30, 0.35, CoffeeIngredient.Ingredient.MILK),
+		WinCondition.new(0.30, 0.35, CoffeeIngredient.Ingredient.MILK_FOAM)
 	],
 	Drink.MOCHA: [
-		WinCondition.new(0.25, 0.35, CoffeeIngredient.Ingredient.COFFEE),
-		WinCondition.new(0.40, 0.50, CoffeeIngredient.Ingredient.MILK),
-		WinCondition.new(0.15, 0.25, CoffeeIngredient.Ingredient.CHOCOLATE)
+		WinCondition.new(0.25, 0.30, CoffeeIngredient.Ingredient.COFFEE),
+		WinCondition.new(0.55, 0.65, CoffeeIngredient.Ingredient.MILK),
+		WinCondition.new(0.10, 0.15, CoffeeIngredient.Ingredient.CHOCOLATE)
 	],
 	Drink.MACCHIATO: [
-		WinCondition.new(0.60, 0.80, CoffeeIngredient.Ingredient.COFFEE),
-		WinCondition.new(0.10, 0.20, CoffeeIngredient.Ingredient.MILK),
-		WinCondition.new(0.05, 0.10, CoffeeIngredient.Ingredient.MILK_FOAM)
+		WinCondition.new(0.25, 0.35, CoffeeIngredient.Ingredient.COFFEE),
+		WinCondition.new(0.65, 0.75, CoffeeIngredient.Ingredient.MILK_FOAM),
 	]
 } 
 func _ready() -> void: 
@@ -60,12 +60,14 @@ func _ready() -> void:
 	hideOnRestart()
 	
 func _process(delta: float) -> void:  
-	
+	if (finished): 
+		return
 	
 	if (failed):  
 		$FailedLabel.show() 
 		$MessageBackground.show() 
-		showOnEnd()
+		showOnEnd() 
+		#finished = true
 		return
 		   
 	
@@ -116,12 +118,12 @@ func evaluate_drink() -> void:
 		var conditions = winning_conditions[drink] 
 		var is_drink_complete = true
 
-		print("Evaluating drink for:", Drink.keys()[drink])
-		print("Expected layers:", conditions.size(), " | Actual layers:", layers.size())
+		#print("Evaluating drink for:", Drink.keys()[drink])
+		#print("Expected layers:", conditions.size(), " | Actual layers:", layers.size())
 
 		if conditions.size() != layers.size():
 			is_drink_complete = false
-			print("❌ Layer count mismatch!")
+			#print("❌ Layer count mismatch!")
 
 		for i in range(min(layers.size(), conditions.size())):
 			var layer = layers[i]
@@ -130,23 +132,24 @@ func evaluate_drink() -> void:
 			var actual_ingredient_str = CoffeeIngredient.Ingredient.keys()[layer.ingredient]
 			var expected_ingredient_str = CoffeeIngredient.Ingredient.keys()[condition.ingredient]
 
-			print("Checking layer", i)
-			print("- Ingredient:", actual_ingredient_str, " | Expected:", expected_ingredient_str)
+			#print("Checking layer", i)
+			#print("- Ingredient:", actual_ingredient_str, " | Expected:", expected_ingredient_str)
 			print("- Percentage:", layer.percentage, " | Expected:", condition.lower_bound * 100, "to", condition.upper_bound * 100)
 
 			if layer.ingredient != condition.ingredient:
 				is_drink_complete = false 
-				print("❌ Ingredient mismatch at layer", i)
+				#print("❌ Ingredient mismatch at layer", i)
 
 			if layer.percentage < condition.lower_bound * 100 or layer.percentage > condition.upper_bound * 100: 
 				is_drink_complete = false
-				print("❌ Ratio out of bounds at layer", i)
+				#print("❌ Ratio out of bounds at layer", i)
 
 		if is_drink_complete:
 			print("✅ Matched drink:", Drink.keys()[drink]) 
-			$SuccessLabel.show() 
-			$MessageBackground.show() 
+			#$SuccessLabel.show() 
+			#$MessageBackground.show() 
 			showOnEnd()
+			finished = true
 		else:
 			print("❌ Drink did not match.")
 
@@ -278,3 +281,7 @@ func _on_restart_button_pressed() -> void:
 	for progress_bar in progress_bars: 
 		progress_bar.hide() 
 	progress_bars = []
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.goto_scene("res://drinks.tscn")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://buj3553hf3p28"]
 
-[ext_resource type="Script" path="res://drinks.gd" id="1_enbsf"]
+[ext_resource type="Script" uid="uid://cwn4wtvaw7q58" path="res://drinks.gd" id="1_enbsf"]
 [ext_resource type="Texture2D" uid="uid://dqm7ei6hcb8oo" path="res://assets/coffee-scene.png" id="2_n7rc2"]
 [ext_resource type="Texture2D" uid="uid://dqwi1okawlbqk" path="res://assets/LEFT.png" id="3_8u0ii"]
 
@@ -30,4 +30,11 @@ offset_right = 544.0
 offset_bottom = 34.0
 text = "Drinks"
 
+[node name="CoffeeGaming" type="Button" parent="."]
+offset_left = 19.0
+offset_top = 135.0
+offset_right = 305.0
+offset_bottom = 440.0
+
 [connection signal="pressed" from="ToKitchenFromDrinks" to="." method="_on_to_kitchen_from_drinks_pressed"]
+[connection signal="pressed" from="CoffeeGaming" to="." method="_on_coffee_gaming_pressed"]
