@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cratm2aegsfnb"]
+
+[ext_resource type="Script" path="res://pretzel_game.gd" id="1_45q84"]
+[ext_resource type="Texture2D" uid="uid://ckgr7m3awyxmf" path="res://assets/pretzel-game.png" id="2_ww17q"]
+
+[node name="PretzelGame" type="Node2D"]
+script = ExtResource("1_45q84")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 540.0
+offset_bottom = 344.0
+texture = ExtResource("2_ww17q")
+
+[node name="MessageLabel" type="Label" parent="."]
+offset_top = 16.0
+offset_right = 1153.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerTrace" type="Line2D" parent="."]
+
+[node name="PretzelOutline" type="Line2D" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 597.0
+offset_right = 278.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 25
+text = "Traces Completed : 0/4"
+
+[node name="PersistentTracesContainer" type="Node2D" parent="."]
+
+[node name="BackButton" type="Button" parent="."]
+visible = false
+offset_left = 584.0
+offset_top = 586.0
+offset_right = 956.0
+offset_bottom = 632.0
+text = "Back To Kitchen"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

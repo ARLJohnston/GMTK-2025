@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://digypij7hn2eu"]
+
+[ext_resource type="Script" path="res://order.gd" id="2_4o8cy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdalh"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Order" type="Node2D"]
+
+[node name="OrderSprite" type="Sprite2D" parent="."]
+position = Vector2(61, 16)
+centered = false
+script = ExtResource("2_4o8cy")
+
+[node name="Button" type="Button" parent="OrderSprite"]
+top_level = true
+z_index = 50
+offset_left = 130.0
+offset_top = 143.0
+offset_right = 249.0
+offset_bottom = 186.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_vdalh")
+text = "complete
+"
+
+[connection signal="pressed" from="OrderSprite/Button" to="OrderSprite" method="_on_button_pressed"]
