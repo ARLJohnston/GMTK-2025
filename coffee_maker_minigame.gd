@@ -10,7 +10,7 @@ var first_run : bool = true
 var failed = false  
 var finished = false
 
-@onready var SHOW_ON_END = [$BackButton, $RestartButton]
+@onready var SHOW_ON_END = [$RestartButton]
 
 const COFFEE_COLOR = Color("#6F4E37") 
 const CHOCOLATE_COLOR = Color("#381819")
@@ -56,7 +56,9 @@ func _ready() -> void:
 	$FirstProgressBar.add_theme_stylebox_override("fill", opaque_fill_style)
 	$FailedLabel.hide()
 	$MessageBackground.hide() 
-	$SuccessLabel.hide() 
+	$SuccessLabel.hide()  
+	
+	$BackButton.show()
 	
 	hideOnRestart()
 	
