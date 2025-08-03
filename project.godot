@@ -12,9 +12,8 @@ config_version=5
 
 config/name="GMTK-2025"
 run/main_scene="res://front.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
->>>>>>> 04ba0c2 (main scene created with all other scenes as children nodes. basic signal processing between order and main created.)
 
 [autoload]
 
